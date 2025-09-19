@@ -1,0 +1,89 @@
+<div id="auth-container" class="auth-container">
+  <!-- FORM SECTION -->
+  <div class="auth-row">
+    <!-- SIGN UP -->
+    <div class="auth-col auth-align-items-center auth-flex-col auth-sign-up">
+      <div class="auth-form-wrapper auth-align-items-center">
+
+      </div>
+    </div>
+    <!-- END SIGN UP -->
+    <!-- SIGN IN -->
+    <div class="auth-col auth-align-items-center auth-flex-col auth-sign-in">
+      <div class="auth-form-wrapper auth-align-items-center">
+        <div class="auth-form auth-sign-in">
+          <div class="auth-input-group">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>   
+            <i class='bx bxs-user'></i>
+             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="auth-input-group">
+            <i class='bx bxs-lock-alt'></i>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+          <button>
+             <%= f.submit "Log in" %>
+          </button>
+
+          <p>
+            <b>
+              Forgot password?
+            </b>
+          </p>
+             <% end %>
+          <p>
+            <span>
+              Don't have an account?
+            </span>
+            <b onclick="authToggle()" class="auth-pointer">
+              <%= link_to "Sign up here", new_user_registration_path %>
+            </b>
+          </p>
+        </div>
+      </div>
+      <div class="auth-form-wrapper"></div>
+    </div>
+    <!-- END SIGN IN -->
+  </div>
+ 
+  <!-- END FORM SECTION -->
+
+  <!-- CONTENT SECTION -->
+  <div class="auth-row auth-content-row">
+    <!-- SIGN IN CONTENT -->
+    <div class="auth-col auth-align-items-center auth-flex-col">
+      <div class="auth-text auth-sign-in">
+        <h2>Welcome To <br>E-Bazzari</h2>
+      </div>
+      <div class="auth-img auth-sign-in"></div>
+    </div>
+    <!-- END SIGN IN CONTENT -->
+    <!-- END SIGN UP CONTENT -->
+  </div>
+  <!-- END CONTENT SECTION -->
+</div>
+
+
+         
+       
+   
+       
+         
+
+<script>
+  let authContainer = document.getElementById('auth-container');
+
+function authToggle() {
+  authContainer.classList.toggle('auth-sign-in');
+  authContainer.classList.toggle('auth-sign-up');
+}
+
+setTimeout(() => {
+  authContainer.classList.add('auth-sign-in');
+}, 200);
+
+</script>
+
+
+
+<%= render "devise/shared/links" %>

@@ -1,0 +1,95 @@
+
+
+<br>
+
+<div id="auth-container" class="auth-container">
+  <!-- FORM SECTION -->
+  <div class="auth-row">
+    <!-- SIGN UP -->
+    <div class="auth-col auth-align-items-center auth-flex-col auth-sign-up">
+      <div class="auth-form-wrapper auth-align-items-center">
+        <div class="auth-form auth-sign-up">
+          <div class="auth-input-group">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+            <i class='bx bxs-user'></i>
+            <input type="text" placeholder="Username">
+          </div>
+          <div class="auth-input-group">
+            <i class='bx bx-mail-send'></i>
+            <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="auth-input-group">
+            <i class='bx bxs-lock-alt'></i>
+         <%= f.label :password %>
+          <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+          <div class="auth-input-group">
+            <i class='bx bxs-lock-alt'></i>
+           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+          <button>
+           <%= f.submit "Sign up" %>
+          </button>
+            <% end %>
+          <p>
+            <span>
+              Already have an account?
+            </span>
+            <b onclick="authToggle()" class="auth-pointer">
+             <%= link_to " Sign in here", new_user_session_path %>
+            </b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END SIGN UP -->
+
+    <!-- SIGN IN -->
+   
+    <!-- END SIGN IN -->
+  </div>
+  <!-- END FORM SECTION -->
+
+  <!-- CONTENT SECTION -->
+  <div class="auth-row auth-content-row">
+    <!-- SIGN IN CONTENT -->
+    <div class="auth-col auth-align-items-center auth-flex-col">
+      <div class="auth-text auth-sign-in">
+        <h2>Welcome</h2>
+      </div>
+      <div class="auth-img auth-sign-in"></div>
+    </div>
+    <!-- END SIGN IN CONTENT -->
+
+    <!-- SIGN UP CONTENT -->
+    <div class="auth-col auth-align-items-center auth-flex-col">
+      <div class="auth-img auth-sign-up"></div>
+      <div class="auth-text auth-sign-up">
+        <h2>Sign up New Account</h2>
+      </div>
+    </div>
+    <!-- END SIGN UP CONTENT -->
+  </div>
+  <!-- END CONTENT SECTION -->
+</div>
+
+
+
+<script>
+  let authContainer = document.getElementById('auth-container');
+
+function authToggle() {
+  authContainer.classList.toggle('auth-sign-in');
+  authContainer.classList.toggle('auth-sign-up');
+}
+
+setTimeout(() => {
+  authContainer.classList.add('auth-sign-up');
+}, 200);
+
+</script>
